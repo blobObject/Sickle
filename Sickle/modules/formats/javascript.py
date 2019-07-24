@@ -50,3 +50,11 @@ class module():
     print("  bytes.push(parseInt(%s.substr(i,2),16));" % self.varname)
     print("}")
     print("var fp = new Uint8Array(bytes);")
+    print("")
+    print("/* to send this data properly (e.g. xhr) we need to send it as a blob object: */"
+    print("var fd = new FormData();")
+    print("var blobObject = new Blob([fp], {type: 'application/...'});")
+    print('fd.append("paramName", blobObject, "filename.ext")')
+    print("xhr = new XMLHttpRequest();")
+    print("xhr.open('POST', '/', true);")
+    print("xhr.send(fd);")
